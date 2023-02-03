@@ -1,0 +1,211 @@
+wait(10)
+local Material = loadstring(game:HttpGet("https://raw.githubusercontent.com/Kinlei/MaterialLua/master/Module.lua"))()
+
+local X = Material.Load({
+	Title = "poke",
+	Style = 3,
+	SizeX = 200,
+	SizeY = 250,
+	Theme = "Dark",
+	ColorOverrides = {
+		MainFrame = Color3.fromRGB(30,30,30)
+	}
+})
+
+-- Tabs
+local Y = X.New({
+	Title = "autofarm"
+})
+
+-- 
+local plr = game.Players.LocalPlayer
+local RunService = game:GetService('RunService')
+local questRemote = game:GetService("ReplicatedStorage").Package.Events.Qaction 
+local punchRemote = game:GetService("ReplicatedStorage").Package.Events.p
+local equipRemote = game:GetService("ReplicatedStorage").Package.Events.equipskill
+local rebirthRemote = game:GetService("ReplicatedStorage").Package.Events.reb
+local meleeRemote = game:GetService("ReplicatedStorage").Package.Events.mel
+local hakaiRemote = game:GetService("ReplicatedStorage").Package.Events.Hak
+local chakraRemote = game:GetService("ReplicatedStorage").Package.Events.cha
+
+
+local Settings = {Tables = {Forms = {'SSJBUI','Ultra Ego','SSJB4','True God of Creation','True God of Destruction','SSJR3','SSJB3','God Of Destruction','God Of Creation','Jiren Ultra Instinct', 'Mastered Ultra Instinct','Godly SSJ2', 'Ultra Instinct Omen','Super Broly','LSSJG','LSSJ4','SSJG4','LSSJ3','SSJ5','Mystic Kaioken','LSSJ Kaioken','SSJ2 Kaioken', 'Evil SSJ','Blue Evolution','Dark Rose','Kefla SSJ2','SSJ Berserker','True Rose', 'SSJB Kaioken','SSJ Rose', 'SSJ Blue','Corrupt SSJ','SSJ Rage','SSJG','SSJ4','Mystic','LSSJ','SSJ3','Spirit SSJ','SSJ2 Majin','SSJ2','SSJ Kaioken','SSJ','FSSJ','Kaioken'}};Variables = {Farm = false}}
+setmetatable(Settings, {__index = function() warn('Dumbass') end}) -- literally no use i was just bored
+
+local function transform()
+    pcall(function()
+        for i,v in pairs(Settings.Tables.Forms) do
+            if equipRemote:InvokeServer(v) then
+                break
+            end
+        end
+        repeat task.wait()
+            if game:GetService("Players").LocalPlayer.Status.SelectedTransformation.Value ~= game:GetService("Players").LocalPlayer.Status.Transformation.Value then
+                game:GetService("ReplicatedStorage").Package.Events.ta:InvokeServer()
+            end
+        until game:GetService("Players").LocalPlayer.Status.SelectedTransformation.Value == game:GetService("Players").LocalPlayer.Status.Transformation.Value
+    end)
+end
+spawn(function()
+    while true and task.wait() do
+        transform()
+    end
+end)
+
+
+local function returnQuest(boolean)
+    local quest = getrenv()._G.x.GetRecommendedQuest(game.Players.LocalPlayer)
+    if (boolean) and quest:find('Kito') then 
+        local A_1 = "Earth"
+        local Event = game:GetService("ReplicatedStorage").Package.Events.TP
+        Event:InvokeServer(A_1)
+    end
+    if (boolean) and quest:find('Vills Planet') then 
+        return 'SSJG Kakata'
+        end
+if (boolean) and quest:find('X Fighter Trainer') then 
+    return 'Radish'
+end
+if (boolean) and quest:find('Mapa') then 
+    return 'Radish'
+end
+if (boolean) and quest:find('Turtle Student') then 
+    return 'Radish'
+end
+if (boolean) and quest:find('Citizen') then 
+    return 'Radish'
+end
+if (boolean) and quest:find('Top X Fighter') then 
+    return 'Radish'
+end
+if (boolean) and quest:find('Super Vegetable') then 
+    return 'Radish'
+end
+if (boolean) and quest:find('Kaio Student') then 
+    return 'Radish'
+end
+return quest 
+end
+
+spawn(function()
+while true do
+            task.wait(0.1)
+        game:GetService("ReplicatedStorage").Package.Events.cha:InvokeServer('Blacknwhite27')
+        end
+end)
+
+
+spawn(function()
+    if game:GetService("Workspace").Living[game.Players.LocalPlayer.Name].Stats.Defense.Value == 0 then
+repeat
+    wait(4)
+local args = {
+    [1] = "Blacknwhite27"
+}
+
+game:GetService("ReplicatedStorage").Package.Events.def:InvokeServer(unpack(args))
+until game:GetService("Workspace").Living[game.Players.LocalPlayer.Name].Stats.Defense.Value >= 100000
+end
+end)
+
+
+spawn(function()
+while true do
+wait(2)
+if game.PlaceId == 3311165597 then
+break
+end
+if game:GetService("Workspace").Living[game.Players.LocalPlayer.Name].Stats.Defense.Value == 0 then
+    wait(2)
+    local A_1 = "Earth"
+    local Event = game:GetService("ReplicatedStorage").Package.Events.TP
+    Event:InvokeServer(A_1)
+wait(2)
+elseif game.PlaceId == 3311165597 then
+break
+end
+end
+end)
+
+spawn(function()
+    while true and task.wait(4) do
+    local Event = game:GetService("ReplicatedStorage").Package.Events.reb
+    Event:InvokeServer()
+end
+end)
+
+spawn(function()
+    wait(30)
+while true and task.wait(2) do
+if game.PlaceId == 5151400895 then
+break
+end
+if game:GetService("Workspace").Living[game.Players.LocalPlayer.Name].Stats.Defense.Value >= 300000000 and game:GetService("ReplicatedStorage").Datas[game.Players.LocalPlayer.UserId].Zeni.Value >= 30000 then
+    local A_1 = "Vills Planet"
+    local Event = game:GetService("ReplicatedStorage").Package.Events.TP
+    Event:InvokeServer(A_1)
+wait(2)
+elseif game.PlaceId == 5151400895 then
+break
+end
+end
+end)
+
+spawn(function()
+    wait(10)
+while true do
+            local Remote = game.ReplicatedStorage.Package.Events['block']
+
+            local Arguments = {
+                [1] = true
+            }
+
+            Remote:InvokeServer(unpack(Arguments))
+end
+end)
+
+
+local B = Y.Toggle({
+    Text = 'autofarm',
+    Callback = function(bool)
+        Settings.Variables.Farm = true
+        while true and task.wait() do 
+            if (not plr.PlayerGui.Main.MainFrame.Frames.Quest.Nop.Visible and true) then
+                for i,v in next, workspace.Living:GetChildren() do 
+                    if (v.Name == returnQuest(true) or v.Name == game:GetService("ReplicatedStorage").Package.Quests[returnQuest(true)].Objective.Value) and not plr.PlayerGui.Main.MainFrame.Frames.Quest.Nop.Visible and v:FindFirstChild('Humanoid') and v:FindFirstChild('HumanoidRootPart') and v.Humanoid.Health > 0 then 
+                        repeat task.wait()
+                            pcall(function() plr.Character.HumanoidRootPart.CFrame = v.HumanoidRootPart.CFrame * CFrame.new(0,0,2) end)
+                            spawn(function()
+                                task.wait()
+                                punchRemote:FireServer('Blacknwhite27',1)
+                                chakraRemote:InvokeServer('Blacknwhite27')
+                                chakraRemote:InvokeServer('Blacknwhite27')
+                                punchRemote:FireServer('Blacknwhite27',1)
+                                meleeRemote:InvokeServer('Mach Kick','Blacknwhite27')
+                                meleeRemote:InvokeServer('High Power Rush','Blacknwhite27')
+                                meleeRemote:InvokeServer('Meteor Crash','Blacknwhite27')
+                                meleeRemote:InvokeServer('Wolf Fang Fist','Blacknwhite27')
+                                meleeRemote:InvokeServer('Spirit Barrage','Blacknwhite27')
+                                meleeRemote:InvokeServer('God Slicer','Blacknwhite27')
+                                meleeRemote:InvokeServer('Sledgehammer','Blacknwhite27')
+                                meleeRemote:InvokeServer('Flash Kick','Blacknwhite27')
+                                meleeRemote:InvokeServer('Uppercut','Blacknwhite27')
+                                meleeRemote:InvokeServer('Vital Strike','Blacknwhite27')
+                                meleeRemote:InvokeServer('Vanish Strike','Blacknwhite27')
+                                meleeRemote:InvokeServer('Super Dragon Fist','Blacknwhite27')
+                                meleeRemote:InvokeServer('Spirit Breaking Cannon','Blacknwhite27')
+                                hakaiRemote:InvokeServer('Soul Punisher','["MouseHit"] = CFrame.new(Vector3.new(1378.4306640625, 18.40189552307129, 1150.8336181640625), Vector3.new(-0.14783287048339844, -0.3049262762069702, -0.9408323764801025)),["FaceMouse"] = true','Blacknwhite27')
+                                hakaiRemote:InvokeServer('Destruction','["MouseHit"] = CFrame.new(Vector3.new(1378.4306640625, 18.40189552307129, 1150.8336181640625), Vector3.new(-0.14783287048339844, -0.3049262762069702, -0.9408323764801025)),["FaceMouse"] = true','Blacknwhite27')
+                        end)
+                        until not v or not v:FindFirstChild('Humanoid') or not v:FindFirstChild('HumanoidRootPart') or v.Humanoid.Health <= 0 or not Settings.Variables.Farm or plr.PlayerGui:WaitForChild('Main').MainFrame.Frames.Quest.Nop.Visible
+                    end 
+                end 
+            else 
+                pcall(function() questRemote:InvokeServer(workspace.Others.NPCs[returnQuest(true)]) end)
+            end 
+        end 
+    end,
+    Enabled = true
+})
+
+
