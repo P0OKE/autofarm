@@ -1,4 +1,4 @@
-wait(0)
+wait(10)
 local Material = loadstring(game:HttpGet("https://raw.githubusercontent.com/Kinlei/MaterialLua/master/Module.lua"))()
 
 local X = Material.Load({
@@ -11,6 +11,25 @@ local X = Material.Load({
 		MainFrame = Color3.fromRGB(30,30,30)
 	}
 })
+spawn(function()
+    while true do 
+        wait(1)
+    if game.Players.LocalPlayer.PlayerGui:FindFirstChild('Start') then
+            firesignal(game.Players.LocalPlayer.PlayerGui.Start.Skip.MouseButton1Click) 
+            task.wait()
+    end
+    end
+    end)
+    
+    spawn(function()
+    while true do
+        wait(1)
+    if game.Players.LocalPlayer.PlayerGui:FindFirstChild('Start') then
+            firesignal(game.Players.LocalPlayer.PlayerGui.Start.Play.MouseButton1Click) 
+            task.wait()
+    end
+    end
+    end)
 
 -- Tabs
 local Y = X.New({
